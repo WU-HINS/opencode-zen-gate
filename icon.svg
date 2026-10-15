@@ -1,35 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" role="img" aria-label="opencode zen gate">
-  <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#12141c"/>
-      <stop offset="1" stop-color="#1d2130"/>
-    </linearGradient>
-    <linearGradient id="gate" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#7ee787"/>
-      <stop offset="1" stop-color="#2ea043"/>
-    </linearGradient>
-    <linearGradient id="beam" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0" stop-color="#58a6ff" stop-opacity="0.95"/>
-      <stop offset="1" stop-color="#58a6ff" stop-opacity="0.15"/>
-    </linearGradient>
-  </defs>
-
-  <rect x="16" y="16" width="480" height="480" rx="96" fill="url(#bg)"/>
-  <rect x="16" y="16" width="480" height="480" rx="96" fill="none" stroke="#30363d" stroke-width="6"/>
-
-  <!-- gate frame -->
-  <path d="M152 400V214c0-57 47-104 104-104s104 47 104 104v186"
-        fill="none" stroke="url(#gate)" stroke-width="34" stroke-linecap="round"/>
-
-  <!-- aperture -->
-  <path d="M196 400V222c0-33 27-60 60-60s60 27 60 60v178"
-        fill="#0d1117" stroke="#238636" stroke-width="10"/>
-
-  <!-- beam passing through -->
-  <path d="M96 306h320" stroke="url(#beam)" stroke-width="26" stroke-linecap="round"/>
-
-  <!-- prompt -->
-  <path d="M228 268l40 38-40 38" fill="none" stroke="#e6edf3" stroke-width="22"
-        stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M296 344h56" stroke="#e6edf3" stroke-width="22" stroke-linecap="round"/>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="512" height="512"><svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="512" height="512" fill="#131010"></rect>
+<path d="M320 224V352H192V224H320Z" fill="#5A5858"></path>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M384 416H128V96H384V416ZM320 160H192V352H320V160Z" fill="white"></path>
+</svg><style>@media (prefers-color-scheme: light) { :root { filter: none; } }
+@media (prefers-color-scheme: dark) { :root { filter: none; } }
+</style></svg>

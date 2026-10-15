@@ -74,6 +74,13 @@ opencode 不会自动补 `x-opencode-*` 头，本插件负责补上，并顺手�
 闸门六条判据、判据 4 的来历（`0xfc0` 边界）、以及逐条实测证据，见配套文档：
 <https://github.com/WU-HINS/opencode-zen-gate> 的 README 与源仓库分析记录。
 
+## Assets
+
+`icon.svg` is the **official opencode app favicon**, taken byte-for-byte from upstream
+`packages/ui/src/assets/favicon/favicon.svg` at `v1.19.0` (612 bytes). No modification.
+opencode and its logo are the property of their owners; it is included here only to identify
+the plugin's host application. Replace it if you prefer a neutral icon.
+
 ## License
 
-MIT
+MIT (plugin code). The bundled icon follows upstream's license.
