@@ -1,0 +1,29 @@
+{
+  "name": "opencode-zen-gate",
+  "version": "1.0.0",
+  "description": "opencode plugin that keeps OpenCode Zen free-tier requests in the shape the server-side gate expects.",
+  "main": "plugin.js",
+  "type": "module",
+  "exports": {
+    ".": "./plugin.js",
+    "./plugin.js": "./plugin.js"
+  },
+  "files": [
+    "plugin.js",
+    "icon.svg",
+    "README.md",
+    "LICENSE"
+  ],
+  "keywords": [
+    "opencode",
+    "opencode-plugin",
+    "zen",
+    "plugin"
+  ],
+  "license": "MIT",
+  "author": "WU-HINS",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/WU-HINS/opencode-zen-gate.git"
+  }
+}
