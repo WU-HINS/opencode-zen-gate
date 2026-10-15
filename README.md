@@ -60,6 +60,20 @@ All six must hold for `POST https://opencode.ai/inference/v1/chat/completions`:
 
 The plugin covers 2, 3, 4 and the schema half of 6. opencode already streams, and `read` is on by default — if you disable `read` for an agent, the gate will reject the request and no plugin can fix that.
 
+## Exports
+
+The module is written for **both** consumers — opencode itself and plugin gateways that validate the file before loading it:
+
+```js
+export const meta   // manifest: id / name / version / description / author / license / icon / type / api
+export const server // the plugin factory
+export default { id: "opencode-zen-gate", server, meta }
+```
+
+- **opencode** takes the v1 shape: the *default export* must be an object containing `server` (`readV1Plugin` in `plugin/shared.ts`), and a **path plugin must also export `id`** — hence the object default.
+- The legacy fallback (`getLegacyPlugins`) requires **every** export to be a function, so an object export like `meta` is only safe once the v1 shape is in place. Do not drop the object default.
+- The whole file stays synchronous with no module imports, so syntax-validating sandboxes accept it.
+
 ## Notes
 
 - The plugin writes `output.jsonSchema`, **not** `output.parameters`. Replacing `parameters` makes the registry drop `jsonSchema` and you lose the real schema.

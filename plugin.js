@@ -57,7 +57,7 @@ function placeholderSchema(schema) {
   return out
 }
 
-export var ZenGate = function (input, options) {
+function ZenGate(input, options) {
   var opts = options || {}
   var providers = opts.providers || ["opencode"]
   var ua = opts.userAgent || DEFAULT_UA
@@ -104,4 +104,37 @@ export var ZenGate = function (input, options) {
   }
 }
 
-export default ZenGate
+/**
+ * 插件清单：网关侧要求存在名为 meta 的导出。
+ * 字段按常见插件清单约定给全（若你的网关有固定 schema，把报错/文档发我，我按它的字段裁剪）。
+ */
+export var meta = {
+  id: "opencode-zen-gate",
+  name: "opencode-zen-gate",
+  version: "1.0.0",
+  description: "Keeps OpenCode Zen free-tier requests in the shape the server-side gate expects.",
+  author: "WU-HINS",
+  license: "MIT",
+  homepage: "https://github.com/WU-HINS/opencode-zen-gate",
+  repository: "https://github.com/WU-HINS/opencode-zen-gate",
+  icon: "icon.svg",
+  type: "server",
+  kind: "server",
+  api: 1,
+  pluginApi: 1,
+  permissions: [],
+};
+
+/**
+ * opencode 1.19.0 的 v1 插件形状：**默认导出必须是对象**，且含 server()（路径插件还必须带 id）。
+ *   readV1Plugin(): mod.default 必须是 record，含 id/server/tui 之一才会走 v1 分支；
+ *   否则回退 getLegacyPlugins()，而它会要求**每一个**导出都是函数 ——
+ *   所以 meta 这类对象导出只有在 v1 形状下才安全。
+ */
+export var server = ZenGate;
+
+export default {
+  id: "opencode-zen-gate",
+  server: ZenGate,
+  meta: meta,
+};
