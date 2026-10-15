@@ -60,6 +60,20 @@ All six must hold for `POST https://opencode.ai/inference/v1/chat/completions`:
 
 The plugin covers 2, 3, 4 and the schema half of 6. opencode already streams, and `read` is on by default — if you disable `read` for an agent, the gate will reject the request and no plugin can fix that.
 
+## Not a new-api plugin
+
+This is an **opencode** plugin. It cannot be installed into **new-api**'s plugin system:
+
+- new-api's registry (`pkg/jsplugin/registry.go`) only accepts **task plugins** — it requires the hooks
+  `buildSubmitRequest`, `parseSubmitResponse`, `parseTaskResult` (plus query/batch hooks) and drives
+  async media channels. There is no hook for the `/v1/chat/completions` relay.
+- Its `meta` whitelist is
+  `requiredCapabilities, submitResponseTypes, sortPriority, website, apiVersion, key, name, icon, description, version, author, baseUrl, channelTypes, models, fetchMode, allowedHosts, upstreams, routes, protocols, usageSchema, usageExamples, usageProfiles, auth, endpoints, submitPaths, actions`.
+  An `id` field is rejected with `plugin meta has unknown field "id"`.
+
+To use the Zen free tier **through new-api**, configure the channel instead — `header_override` +
+`param_override` (see "What the gate checks" below). No plugin is involved.
+
 ## Exports
 
 The module is written for **both** consumers — opencode itself and plugin gateways that validate the file before loading it:
